@@ -1,2 +1,2 @@
-# student-proejects-api
-API for the app show casing some students projects
+# Student Projets API
+This is the API for the app show casing some students projects

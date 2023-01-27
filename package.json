@@ -1,0 +1,23 @@
+{
+  "name": "student-proejects-api",
+  "version": "1.0.0",
+  "description": "This is the API for the app show casing some students projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bam92/student-proejects-api.git"
+  },
+  "keywords": [],
+  "author": " <Abel Lifaefi Mbula>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bam92/student-proejects-api/issues"
+  },
+  "homepage": "https://github.com/Bam92/student-proejects-api#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
