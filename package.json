@@ -1,23 +1,27 @@
 {
   "name": "student-proejects-api",
   "version": "1.0.0",
-  "description": "This is the API for the app show casing some students projects",
+  "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Bam92/student-proejects-api.git"
+    "test": "mocha",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development nodemon server.js"
   },
   "keywords": [],
-  "author": " <Abel Lifaefi Mbula>",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Bam92/student-proejects-api/issues"
-  },
-  "homepage": "https://github.com/Bam92/student-proejects-api#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.9.0",
+    "sequelize": "^6.28.0",
+    "swagger": "^0.7.5",
+    "swagger-ui-express": "^4.6.0",
+    "yamljs": "^0.3.0"
   }
 }
