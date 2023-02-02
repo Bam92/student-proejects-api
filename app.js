@@ -4,5 +4,7 @@ import usersRoutes from "./routes/users.routes.js";
 import { BASE_API } from "./utils/constants.js";
 dotenv.config();
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(BASE_API + "/auth", usersRoutes);
 export default app;
