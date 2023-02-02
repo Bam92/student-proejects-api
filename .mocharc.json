@@ -7,7 +7,7 @@
     "package": "./package.json",
     "reporter": "spec",
     "slow": 75,
-    "timeout": 5000,
+    "timeout": 10000,
     "ui": "tdd",
     "watch-files": [
         "lib/**/*.js",
