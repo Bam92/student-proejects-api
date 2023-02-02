@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import User from "../models/User.js";
 import { registerValidation } from "../utils/validations.js";
 
@@ -7,9 +8,10 @@ export default class UsersController {
         if (error) {
             return res.status(400).json({
                 statusCode: 400,
-                errors: { ...error.details },
+                error: error.details[0].message,
             });
         }
+        console.log(req.body);
         try {
             const user = await User.findOne({
                 where: { email: req.body.email },
@@ -21,11 +23,12 @@ export default class UsersController {
                 });
             }
             console.log("New user");
+            const password = await hash(req.body.password, 14);
             await User.create({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
-                password: req.body.password,
+                password,
             });
             return res.status(201).json({
                 statusCode: 201,
@@ -33,7 +36,6 @@ export default class UsersController {
                 message: "Utilisateur créer avec succés",
             });
         } catch (error) {
-            console.log(error);
             return res
                 .status(500)
                 .json({ statusCode: 500, error: error.message });
