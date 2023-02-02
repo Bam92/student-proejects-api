@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/dbConfig";
+import { sequelize } from "../config/dbConfig.js";
 
 const userSchema = {
     id: {
