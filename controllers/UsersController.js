@@ -1,3 +1,5 @@
 export default class UsersController {
-    register(req, res) {}
+    async register(req, res) {
+        return res.status(400).json({});
+    }
 }

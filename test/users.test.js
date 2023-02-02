@@ -1,4 +1,5 @@
 import { hash } from "bcrypt";
+import { expect } from "chai";
 import { BASE_API } from "../utils/constants.js";
 import request from "./setup.test.js";
 describe("Should regist a user", async (done) => {
