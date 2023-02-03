@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/dbConfig";
+
+import { sequelize } from "../config/dbConfig.js";
 
 const userSchema = {
     id: {
@@ -20,7 +21,7 @@ const userSchema = {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    pasword: {
+    password: {
         type: DataTypes.STRING,
         allowNull: false,
     },
