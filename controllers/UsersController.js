@@ -44,7 +44,22 @@ export default class UsersController {
             const users = await User.findAll();
             return res.status(200).json(users || []);
         } catch (error) {
-            return res.status(500).json(error.message);
+            return res.status(500).json({ error: error.message });
+        }
+    }
+
+    async getUserById(req, res) {
+        const userId = req.params.id;
+        try {
+            if (!userId) {
+                return res
+                    .status(400)
+                    .json({ status: 400, error: "id not provided" });
+            }
+            const user = await User.findByPk(req.params.id);
+            return res.status(200).json(user.dataValues);
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
         }
     }
 }
