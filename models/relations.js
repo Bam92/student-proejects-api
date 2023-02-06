@@ -1,7 +1,7 @@
-import Student from "../models/Student.js";
 import Project from "../models/Project.js";
+import Student from "../models/Student.js";
 
 export default async function () {
-    await Project.belongsTo(Student, {});
-    await Student.hasMany(Project);
+    Project.belongsTo(Student, {});
+    Student.hasMany(Project);
 }

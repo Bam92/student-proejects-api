@@ -1,42 +1,40 @@
-import { hash } from "bcrypt";
+import { genSalt, hash } from "bcrypt";
 import User from "../models/User.js";
+import Alert from "../utils/Alert.js";
 import { registerValidation } from "../utils/validations.js";
 
 export default class UsersController {
     async register(req, res) {
+        const alert = new Alert(req, res);
+        const bodyRequest = req.body;
+        // Validate user input(name, email, password)
+        const { error } = registerValidation(bodyRequest);
+        if (error) {
+            alert.setOtherData({ message: error.details[0].message });
+            return alert.danger(
+                "Erreur survenus lors de l'enregistrement de l'utilisateur"
+            );
+        }
+
+        // check if the email is already register
+        const userExist = await User.findOne({
+            where: { email: bodyRequest.email },
+        });
+        if (userExist) {
+            return alert.danger(" already exists");
+        }
+
         try {
-            const { error } = registerValidation(req.body);
-            if (error) {
-                return res.status(400).json({
-                    statusCode: 400,
-                    error: error.details[0].message,
-                });
-            }
-            const user = await User.findOne({
-                where: { email: req.body.email },
-            });
-            if (user) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    error: "L'utilisateur existe déjà",
-                });
-            }
-            const password = await hash(req.body.password, 14);
-            await User.create({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                password,
-            });
-            return res.status(201).json({
-                statusCode: 201,
-                errors: null,
-                message: "Utilisateur créer avec succés",
-            });
+            // hash the password
+            const salt = await genSalt(14);
+            const password = await hash(bodyRequest.password, salt);
+            bodyRequest.password = password;
+            // create a user objet and save in the DB
+            await User.create(bodyRequest);
+            return alert.success("Utilisateur enregister avec success");
         } catch (error) {
-            return res
-                .status(500)
-                .json({ statusCode: 500, error: error.message });
+            console.log(error);
+            return alert.danger(error.message, 500);
         }
     }
     async getAllUsers(req, res) {

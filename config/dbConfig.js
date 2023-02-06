@@ -13,6 +13,6 @@ export function connectDB(app) {
             console.log(`DB connexion successfuly`);
         })
         .catch((err) => {
-            console.log(`DB connexion failed`, err.message, err.stack);
+            console.error(`DB connexion failed`, err.message, err.stack);
         });
 }

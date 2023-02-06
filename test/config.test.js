@@ -5,7 +5,7 @@ import server from "../app.js";
 import { sequelize } from "../config/dbConfig.js";
 chai.use(chaiHttp);
 before((done) => {
-    sequelize.sync({ force: true }).then(() => {
+    sequelize.sync({ alter: true }).then(() => {
         done();
     });
 });
