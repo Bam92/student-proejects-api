@@ -21,7 +21,7 @@ export default class UsersController {
             where: { email: bodyRequest.email },
         });
         if (userExist) {
-            return alert.danger(" already exists");
+            return alert.danger("Utilisateur existe déjà", 400);
         }
 
         try {
@@ -31,12 +31,13 @@ export default class UsersController {
             bodyRequest.password = password;
             // create a user objet and save in the DB
             await User.create(bodyRequest);
-            return alert.success("Utilisateur enregister avec success");
+            return alert.success("Utilisateur enregister avec success", 201);
         } catch (error) {
             console.log(error);
             return alert.danger(error.message, 500);
         }
     }
+    async login(req, res) {}
     async getAllUsers(req, res) {
         try {
             const users = await User.findAll();

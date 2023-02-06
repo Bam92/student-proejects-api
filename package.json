@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "mocha --require @babel/register --recursive --exit --timeout 20000",
+    "test": "mocha --require @babel/register --timeout 20000",
     "start": "NODE_ENV=production node server.js",
     "dev": "NODE_ENV=development nodemon server.js"
   },
