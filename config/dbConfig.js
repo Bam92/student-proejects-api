@@ -3,7 +3,6 @@ import { Sequelize } from "sequelize";
 
 dotenv.config();
 const dbURL = process.env.BD_URL;
-console.log(dbURL);
 const logging = () => (process.env.NODE_ENV === "development" ? true : false);
 export const sequelize = new Sequelize(dbURL, { logging });
 
@@ -14,6 +13,6 @@ export function connectDB(app) {
             console.log(`DB connexion successfuly`);
         })
         .catch((err) => {
-            console.log(`DB connexion failed`, err.message, err.stack);
+            console.error(`DB connexion failed`, err.message, err.stack);
         });
 }

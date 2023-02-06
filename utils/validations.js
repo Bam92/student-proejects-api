@@ -9,7 +9,6 @@ export const registerValidation = (data) => {
     });
     return Schema.validate(data);
 };
-
 export const addStudentValidation = (data) => {
     const Schema = Joi.object({
         firstName: Joi.string().min(3).max(255).required(),
@@ -32,3 +31,5 @@ export const addProjectValidation = (data) => {
     });
     return Schema.validate(data);
 };
+
+
