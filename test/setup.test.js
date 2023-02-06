@@ -1,6 +1,6 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
-import { before } from "mocha";
+import { after, before } from "mocha";
 import server from "../app.js";
 import { sequelize } from "../config/dbConfig.js";
 chai.use(chaiHttp);

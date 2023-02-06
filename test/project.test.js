@@ -1,9 +1,9 @@
 import chai, { expect } from "chai";
-import { describe, it } from "mocha";
 import { BASE_API } from "../utils/constants.js";
 // For authentification and users interaction features test
 import chaiHttp from "chai-http";
 // import { afterEach, beforeEach } from "mocha";
+import { describe, it } from "mocha";
 import app from "../app.js";
 chai.use(chaiHttp);
 // It will be used to make http request in one instance

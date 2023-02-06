@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "mocha": true
+    },
+    // "import/no-extraneous-dependencies": [
+    //     "error",
+    //     {
+    //         "devDependencies": false,
+    //         "optionalDependencies": false,
+    //         "peerDependencies": false
+    //     }
+    // ],
+    "extends": "airbnb",
+    "overrides": [],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        // Active single quote and double quote and template litteral
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+    }
+}

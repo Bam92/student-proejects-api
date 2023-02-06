@@ -1,9 +1,12 @@
+import { expect } from "chai";
+import { describe, it } from "mocha";
 import { BASE_API } from "../utils/constants.js";
 import request from "./setup.test.js";
 describe("User workflow", () => {
     it("Should Register user in DATABASE", (done) => {
         let user = {
-            name: "Arick Bulakali",
+            firstName: "Arick",
+            lastName: "Bulakali",
             email: "arickwalcott@gmail.com",
             password: "123456",
         };
@@ -15,13 +18,13 @@ describe("User workflow", () => {
             .then((res) => {
                 expect(res.status).to.be.equal(201);
                 expect(res.body).to.be.a("object");
-                expect(res.body.alert.error).to.be.equal(null);
+                expect(res.body.error).to.be.equal(null);
                 done();
-            })
-            .catch((err) => {
-                done();
-                throw err;
             });
+        // .catch((err) => {
+        //     done();
+        //     throw err;
+        // });
     });
     it("Should Login user", (done) => {
         const user = {
