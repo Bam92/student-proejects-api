@@ -9,3 +9,13 @@ export const registerValidation = (data) => {
     });
     return Schema.validate(data);
 };
+
+export const projectValidation = (data) => {
+    const Schema = Joi.object({
+        title: Joi.string().min(2).max(255).required(),
+        description: Joi.string().min(100).required,
+        previewLink: Joi.string().link().required(),
+        githubLink: Joi.string().link().required(),
+    });
+    return Schema.validate(data);
+};
