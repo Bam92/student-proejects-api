@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import { Sequelize } from "sequelize";
 dotenv.config();
 const dbURL = process.env.BD_URL;
-console.log(dbURL);
 const logging = () => (process.env.NODE_ENV === "development" ? true : false);
 export const sequelize = new Sequelize(dbURL, { logging });
 export function connectDB(app) {

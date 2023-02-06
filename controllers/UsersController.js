@@ -4,15 +4,14 @@ import { registerValidation } from "../utils/validations.js";
 
 export default class UsersController {
     async register(req, res) {
-        const { error } = registerValidation(req.body);
-        if (error) {
-            return res.status(400).json({
-                statusCode: 400,
-                error: error.details[0].message,
-            });
-        }
-        console.log(req.body);
         try {
+            const { error } = registerValidation(req.body);
+            if (error) {
+                return res.status(400).json({
+                    statusCode: 400,
+                    error: error.details[0].message,
+                });
+            }
             const user = await User.findOne({
                 where: { email: req.body.email },
             });
@@ -22,7 +21,6 @@ export default class UsersController {
                     error: "L'utilisateur existe déjà",
                 });
             }
-            console.log("New user");
             const password = await hash(req.body.password, 14);
             await User.create({
                 firstName: req.body.firstName,
