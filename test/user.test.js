@@ -3,11 +3,12 @@ import { describe, it } from "mocha";
 import { BASE_API } from "../utils/constants.js";
 import request from "./config.test.js";
 describe("User workflow", () => {
+    let str = (Math.random() + 10).toString(36).substring(7);
     it("Should Register user in DATABASE", (done) => {
         let user = {
             firstName: "Arick",
             lastName: "Bulakali",
-            email: "bum@gmail.com",
+            email: str + "@gmail.com",
             password: "123456",
         };
         // 1) Register new User

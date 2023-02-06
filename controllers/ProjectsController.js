@@ -11,5 +11,7 @@ export default class ProjectsController {
             return alert.danger(error.message, 500);
         }
     }
-    async getOneProject(req, res) {}
+    async getOneProject(req, res) {
+        const id = req.params.id;
+    }
 }

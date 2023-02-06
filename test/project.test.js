@@ -24,4 +24,18 @@ describe("Project /api/v1/project", () => {
                 throw err;
             });
     });
+    it("It should give a project", () => {
+        const id = "";
+        request
+            .get(BASE_API + "/api/v1/project/" + id)
+            .send()
+            .then((res) => {
+                expect(res.body).to.be.a("object");
+                expect(res.status).to.be.equal(200);
+            })
+            .catch((err) => {
+                console.error(err);
+                throw err;
+            });
+    });
 });

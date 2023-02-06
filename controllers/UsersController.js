@@ -37,7 +37,9 @@ export default class UsersController {
             return alert.danger(error.message, 500);
         }
     }
-    async login(req, res) {}
+    async login(req, res) {
+        return res.status(400).json({ message: "Not yet" });
+    }
     async getAllUsers(req, res) {
         try {
             const users = await User.findAll();
