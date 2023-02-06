@@ -19,3 +19,16 @@ export const addStudentValidation = (data) => {
     });
     return Schema.validate(data);
 };
+
+export const addProjectValidation = (data) => {
+    const Schema = Joi.object({
+        title: Joi.string().min(3).max(200).required(),
+        description: Joi.string().min(3).max(255).required(),
+        tags: Joi.array().min(1).required(),
+        previewLink: Joi.string().min(10).required(),
+        githubLink: Joi.string().min(5),
+        publish: Joi.string(),
+        studentId: Joi.string().min(3).max(255).required(),
+    });
+    return Schema.validate(data);
+};
