@@ -17,6 +17,10 @@ const projectSchema = {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    tags: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     previewLink: {
         type: DataTypes.STRING,
         allowNull: false,
