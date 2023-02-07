@@ -26,4 +26,24 @@ export default class ProjectsController {
             return alert.danger(error.message, 500);
         }
     }
+    async addProject(req, res) {
+        const { body } = req;
+        const alert = new Alert(req, res);
+        const { error } = addProjectValidation(body);
+        if (error) {
+            return alert.danger(error.details[0].message);
+        }
+        try {
+            const projectExist = await Project.findOne({
+                where: { title: body.title, description: body.description },
+            });
+            if (projectExist) {
+                return alert.danger("Le project existe déjà", 409);
+            }
+            await Product.create(body);
+            return alert.success("Project ajouter avec succés", 201);
+        } catch (error) {
+            return alert.danger(error.message, 500);
+        }
+    }
 }

@@ -1,7 +1,7 @@
 import { should } from "chai";
 import { describe, it } from "mocha";
 import { BASE_API } from "../utils/constants.js";
-import request from "./setup.test.js";
+import request from "./config.test.js";
 
 should();
 
