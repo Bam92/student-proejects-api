@@ -1,5 +1,6 @@
 import Project from "../models/Project.js";
 import Alert from "../utils/Alert.js";
+import { addProjectValidation } from "../utils/validations.js";
 
 export default class ProjectsController {
     async getAllProjects(req, res) {
@@ -40,9 +41,11 @@ export default class ProjectsController {
             if (projectExist) {
                 return alert.danger("Le project existe déjà", 409);
             }
-            await Product.create(body);
+            body.tags = JSON.stringify(body.tags);
+            await Project.create(body);
             return alert.success("Project ajouter avec succés", 201);
         } catch (error) {
+            console.log(error);
             return alert.danger(error.message, 500);
         }
     }
