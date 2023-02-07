@@ -24,6 +24,25 @@ describe("Project /api/v1/project", () => {
                 throw err;
             });
     });
+
+    it("Should add a project", (done) => {
+        const project = {
+            title: "Tchat app",
+            description: "Application de tchat en ligne",
+            tags: "reactjs, expressjs, socket,io",
+            previewLink: "https://www.gda-preview.com",
+            githubLink: "https://www.github.com/code",
+            publish: "active",
+        };
+        request
+            .BASE_API(BASE_API + "/projects/add")
+            .send(project)
+            .end((err, res) => {
+                expect(res.status).to.be.equal(201);
+                expect(res.body.error).to.be.equal(null);
+                done();
+            });
+    });
     it("should give a project", () => {
         const id = "";
         request
@@ -35,28 +54,6 @@ describe("Project /api/v1/project", () => {
             })
             .catch((err) => {
                 console.error(err);
-                throw err;
-            });
-    });
-    it("Should add a project", (done) => {
-        const project = {
-            title: "Tchat app",
-            description: "Application de tchat en ligne",
-            tags: "reactjs, expressjs, socket,io",
-            previewLink: "https://www.gda-preview.com",
-            githubLink: "https://www.github.com/code",
-            publish: "active",
-        };
-        request
-            .post(BASE_API + "/project/add")
-            .send(project)
-            .then((res) => {
-                expect(res.status).to.be.equal(201);
-                expect(res.body.error).to.be.equal(null);
-                done();
-            })
-            .catch((err) => {
-                console.log(err);
                 throw err;
             });
     });
