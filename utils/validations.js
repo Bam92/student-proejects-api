@@ -27,9 +27,7 @@ export const addProjectValidation = (data) => {
         previewLink: Joi.string().min(10).required(),
         githubLink: Joi.string().min(5),
         publish: Joi.string(),
-        studentId: Joi.string().min(3).max(255).required(),
+        StudentId: Joi.string().min(3).max(255).required(),
     });
     return Schema.validate(data);
 };
-
-
