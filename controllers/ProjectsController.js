@@ -1,11 +1,15 @@
 import Project from "../models/Project.js";
+import Student from "../models/Student.js";
 import Alert from "../utils/Alert.js";
 import { addProjectValidation } from "../utils/validations.js";
 
 export default class ProjectsController {
     async getAllProjects(req, res) {
         try {
-            const projects = await Project.findAll();
+            const projects = await Project.findAll({ include: Student });
+            projects.map(
+                (project) => (project.tags = JSON.parse(project.tags))
+            );
             return res.status(200).json(projects || []);
         } catch (error) {
             const alert = new Alert(req, res);
@@ -16,8 +20,9 @@ export default class ProjectsController {
         const id = req.params.id;
         const alert = new Alert(req, res);
         try {
-            const project = await Project.findByPk(id);
+            const project = await Project.findByPk(id, { include: Student });
             if (project) {
+                project.tags = JSON.parse(project.tags);
                 return res.status(200).json(project);
             }
 
