@@ -34,6 +34,7 @@ export const addProjectValidation = (data) => {
 export const addCategoryValidator = (data) => {
     const Schema = Joi.object({
         title: Joi.string().min(2).max(255).required(),
+        description: Joi.string().default(null),
     });
     return Schema.validate(data);
 };

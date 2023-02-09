@@ -7,7 +7,6 @@ describe("CATEGORIE /api/v1/categories", () => {
         const str = (Math.random() + 15).toString(36).substring(7);
         const category = {
             title: str,
-            description: "",
         };
         request
             .post(BASE_API + "/categories/add")
@@ -15,6 +14,20 @@ describe("CATEGORIE /api/v1/categories", () => {
             .then((res) => {
                 expect(res.status).to.be.equal(201);
                 expect(res.body).to.be.a("object");
+                done();
+            })
+            .catch((err) => {
+                console.log(err);
+                throw err;
+            });
+    });
+    it("Should give the list of categories", (done) => {
+        request
+            .get(BASE_API + "/categories")
+            .send()
+            .then((res) => {
+                expect(res.status).to.be.equal(200);
+                expect(res.body).to.be.a("array");
                 done();
             })
             .catch((err) => {
