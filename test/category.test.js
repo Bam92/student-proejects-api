@@ -3,10 +3,10 @@ import { describe, it } from "mocha";
 import { BASE_API } from "../utils/constants.js";
 import request from "./config.test.js";
 describe("CATEGORIE /api/v1/categories", () => {
-    it("Should create a categori", (done) => {
-        const str = (Math.random() + 15).toString(36).substring(17);
+    it("Should create a category", (done) => {
+        const str = (Math.random() + 15).toString(36).substring(7);
         const category = {
-            name: str,
+            title: str,
             description: "",
         };
         request
