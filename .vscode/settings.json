@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "ndekocode",
+            "username": "ndekocode",
+            "password": "7288Ndeko*",
+            "database": "student_project"
+        }
+    ]
+}

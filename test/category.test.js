@@ -35,4 +35,19 @@ describe("CATEGORIE /api/v1/categories", () => {
                 throw err;
             });
     });
+    it("Should return a category", (done) => {
+        const id = "51797bf5-8eaa-44ab-bde5-48db04e3fb35";
+        request
+            .get(BASE_API + "/categories/" + id)
+            .send()
+            .then((res) => {
+                expect(res.status).to.be.equal(200);
+                expect(res.body).to.be.an("array");
+                done();
+            })
+            .catch((err) => {
+                console.log(err);
+                throw err;
+            });
+    });
 });
