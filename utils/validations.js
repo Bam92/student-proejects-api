@@ -31,3 +31,10 @@ export const addProjectValidation = (data) => {
     });
     return Schema.validate(data);
 };
+export const addCategoryValidator = (data) => {
+    const Schema = Joi.object({
+        title: Joi.string().min(2).max(255).required(),
+        description: Joi.string().min(10).max(255),
+    });
+    return Schema.validate(data);
+};
