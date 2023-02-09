@@ -42,7 +42,7 @@ describe("CATEGORIE /api/v1/categories", () => {
             .send()
             .then((res) => {
                 expect(res.status).to.be.equal(200);
-                expect(res.body).to.be.an("array");
+                expect(res.body).to.be.a("object");
                 done();
             })
             .catch((err) => {

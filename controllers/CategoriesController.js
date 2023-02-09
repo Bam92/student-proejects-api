@@ -42,6 +42,7 @@ export default class CategoriesController {
             if (category) {
                 return res.status(200).json(category);
             }
+            return alert.danger("Categorie introuvable", 404);
         } catch (error) {
             console.log(error);
             return alert.danger(error.message, 500);
