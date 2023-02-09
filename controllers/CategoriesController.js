@@ -25,13 +25,26 @@ export default class CategoriesController {
             return alert.danger(error.message, 500);
         }
     }
-    async getAll() {
+    async getAll(req, res) {
         try {
             const categories = await Category.findAll();
             return res.status(200).json(categories || []);
         } catch (err) {
             const alert = new Alert(req, res);
             return alert.danger(err.message);
+        }
+    }
+    async getOne(req, res) {
+        const id = req.params.id;
+        const alert = new Alert(req, res);
+        try {
+            const category = await Category.findByPk(id);
+            if (category) {
+                return res.status(200).json(category);
+            }
+        } catch (error) {
+            console.log(error);
+            return alert.danger(error.message, 500);
         }
     }
 }
