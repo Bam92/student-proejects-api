@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import { connectDB } from "./config/dbConfig.js";
 import buildRelation from "./models/relations.js";
+import categoriesRouter from "./routes/categories.routes.js";
 import projectsRouter from "./routes/projects.routes.js";
 import studentsRoutes from "./routes/students.routes.js";
 import usersRoutes from "./routes/users.routes.js";
@@ -14,6 +15,7 @@ app.use(BASE_API + "/auth", usersRoutes);
 
 app.use(BASE_API + "/projects", projectsRouter);
 app.use(BASE_API + "/students", studentsRoutes);
+app.use(BASE_API + "/categories", categoriesRouter);
 
 connectDB();
 
