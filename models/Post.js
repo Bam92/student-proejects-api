@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/dbConfig.js";
-const Category = sequelize.define("category", {
+
+const Post = sequelize.define("post", {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -11,13 +12,9 @@ const Category = sequelize.define("category", {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    description: {
+    content: {
         type: DataTypes.TEXT,
-        allowNull: true,
-    },
-    tags: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
 });
-export default Category;
+export default Post;

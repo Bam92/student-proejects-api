@@ -38,3 +38,14 @@ export const addCategoryValidator = (data) => {
     });
     return Schema.validate(data);
 };
+
+export const addPostValidator = (data) => {
+    const Schema = Joi.object({
+        title: Joi.string().min(10).max(255).required(),
+        content: Joi.string().default(null).min(5),
+        StudentId: Joi.string().default(null),
+        UserId: Joi.string().default(null),
+        categoriesId: Joi.array(),
+    });
+    return Schema.validate(data);
+};
