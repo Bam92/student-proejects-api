@@ -15,9 +15,5 @@ const Category = sequelize.define("category", {
         type: DataTypes.TEXT,
         allowNull: true,
     },
-    tags: {
-        type: DataTypes.STRING,
-        allowNull: true,
-    },
 });
 export default Category;

@@ -3,6 +3,7 @@ import Student from "./Student.js";
 import Post from "./Post.js";
 import User from "./User.js";
 import Category from "./Category.js";
+import PostCategory from "./PostCategory.js";
 
 export default async function () {
     Project.belongsTo(Student, {});
@@ -11,6 +12,12 @@ export default async function () {
     Post.belongsTo(Student, {});
     Post.belongsTo(User, {});
 
-    Category.belongsTo(Post, {});
-    Post.hasMany(Category, {});
+    Category.belongsToMany(Post, {
+        through: PostCategory,
+        as: "PostCategory",
+    });
+    Post.belongsToMany(Category, {
+        through: PostCategory,
+        as: "PostCategory",
+    });
 }

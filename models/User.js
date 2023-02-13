@@ -32,6 +32,6 @@ const userSchema = {
     },
 };
 
-const User = sequelize.define("User", userSchema);
+const User = sequelize.define("user", userSchema);
 
 export default User;

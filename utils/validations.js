@@ -27,7 +27,7 @@ export const addProjectValidation = (data) => {
         previewLink: Joi.string().min(10).required(),
         githubLink: Joi.string().min(5),
         publish: Joi.string(),
-        StudentId: Joi.string().min(3).max(255).required(),
+        studentId: Joi.string().min(3).max(255).required(),
     });
     return Schema.validate(data);
 };
@@ -43,9 +43,9 @@ export const addPostValidator = (data) => {
     const Schema = Joi.object({
         title: Joi.string().min(10).max(255).required(),
         content: Joi.string().default(null).min(5),
-        StudentId: Joi.string().default(null),
-        UserId: Joi.string().default(null),
-        categoriesId: Joi.array(),
+        studentId: Joi.string(),
+        userId: Joi.string(),
+        categories: Joi.array(),
     });
     return Schema.validate(data);
 };

@@ -36,6 +36,6 @@ const projectSchema = {
     },
 };
 
-const Project = sequelize.define("Project", projectSchema);
+const Project = sequelize.define("project", projectSchema);
 
 export default Project;
