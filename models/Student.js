@@ -28,6 +28,6 @@ const studentSchema = {
     },
 };
 
-const Student = sequelize.define("Student", studentSchema);
+const Student = sequelize.define("student", studentSchema);
 
 export default Student;

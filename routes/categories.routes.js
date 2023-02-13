@@ -5,6 +5,6 @@ const categoriesRouter = Router();
 const categoriesCTRL = new CategoriesController();
 categoriesRouter.get("/", categoriesCTRL.getAll);
 categoriesRouter.get("/:id", categoriesCTRL.getOne);
-categoriesRouter.post("/add", categoriesCTRL.addCategory);
+categoriesRouter.post("/", categoriesCTRL.addCategory);
 
 export default categoriesRouter;
