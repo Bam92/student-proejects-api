@@ -3,6 +3,8 @@ import Post from "../models/Post.js";
 import Category from "../models/Category.js";
 import Alert from "../utils/Alert.js";
 import PostCategory from "../models/PostCategory.js";
+import User from "../models/User.js";
+import Student from "../models/Student.js";
 
 export default class PostController {
     async getAllPosts(req, res) {
@@ -20,7 +22,11 @@ export default class PostController {
         try {
             const post = await Post.findOne({
                 where: { id: req.params.id },
-                include: [{ model: Category, as: "PostCategory" }],
+                include: [
+                    { model: Category, as: "PostCategory" },
+                    User,
+                    Student,
+                ],
             });
             res.status(200).json({ post });
         } catch (error) {
